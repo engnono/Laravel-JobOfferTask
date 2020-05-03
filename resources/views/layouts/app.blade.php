@@ -18,6 +18,7 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/sidebar.css') }}" rel="stylesheet">
 </head>
 <body>
     <div id="app">
@@ -71,10 +72,26 @@
                 </div>
             </div>
         </nav>
+<div class="row>">
+        <div class="col-md-3">
+            @auth
+            @section('sidebar')
+                <div class="border bg-light" id="sidebar-wrapper">
+                    <div class="list-group list-group-flush">
+                        <a href="{{ route('companies.index') }}" class="list-group-item list-group-item-action bg-light">Companies</a>
+                        <a href="{{ route('employees.index') }}" class="list-group-item list-group-item-action bg-light">Employees</a>
+                    </div>
+                </div>
+            @show
+            @endauth
+        </div>
 
+        <div class="col-md-9">
         <main class="py-4">
             @yield('content')
         </main>
+        </div>
+    </div>
     </div>
 </body>
 </html>
